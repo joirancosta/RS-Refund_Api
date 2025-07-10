@@ -1,6 +1,8 @@
+import "express-async-errors"
 import express from "express";
 import cors from "cors";
 import { errorHandling } from "./middlewares/error-handling"
+import { routes } from "./routes"
 // import { AppError } from "./utils/app-error"
 // import { z } from "zod"
 
@@ -17,6 +19,8 @@ app.use(express.json())
 
 //   res.send("Hello, World!")
 // })
+
+app.use(routes)
 
 app.use(errorHandling)
 
