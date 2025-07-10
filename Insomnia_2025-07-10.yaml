@@ -1,0 +1,164 @@
+type: collection.insomnia.rest/5.0
+name: Refund Api
+meta:
+  id: wrk_626268be4c3b49fb949abf82e0cc52d6
+  created: 1752154860780
+  modified: 1752154860780
+  description: ""
+collection:
+  - name: Users
+    meta:
+      id: fld_31646fe8c7814102bb454eda889b2adb
+      created: 1752157236138
+      modified: 1752157277620
+      sortKey: -1752157236138
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
+        name: Create
+        meta:
+          id: req_408728a06d1b46cc8cc8896f3367b51a
+          created: 1752157239893
+          modified: 1752158696195
+          isPrivate: false
+          description: ""
+          sortKey: -1752157239893
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Joiran Costa",
+            	"email": "joiran@email.com",
+            	"password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RESOURCE: users
+  - name: Sessions
+    meta:
+      id: fld_b745fb9b925d489780fa80186a972e44
+      created: 1752173755433
+      modified: 1752173765384
+      sortKey: -1751900363244
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
+        name: Create
+        meta:
+          id: req_6734aa68aa544b7385d4c8211cbfa9b1
+          created: 1752173755435
+          modified: 1752174685364
+          isPrivate: false
+          description: ""
+          sortKey: -1752157239893
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "joiran@email.com",
+            	"password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RESOURCE: sessions
+  - name: Refunds
+    meta:
+      id: fld_9d01bf254b434a9abb13166fc0bcf8ed
+      created: 1752180660658
+      modified: 1752180690962
+      sortKey: -1751771926797
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
+        name: Create
+        meta:
+          id: req_b582c8d95a364ac8a7c911bf54aec4d0
+          created: 1752180660661
+          modified: 1752180677149
+          isPrivate: false
+          description: ""
+          sortKey: -1752157239893
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RESOURCE: refunds
+  - url: "{{ _.BASE_URL }}"
+    name: Test
+    meta:
+      id: req_0d4a42b74363444b930302d1d0dd1db0
+      created: 1752154906446
+      modified: 1752173808657
+      isPrivate: false
+      description: ""
+      sortKey: -1752157236238
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_229eb873d9aa78d46abc59d443d5c0091f22a5b9
+    created: 1752154860834
+    modified: 1752154860834
+environments:
+  name: Base Environment
+  meta:
+    id: env_229eb873d9aa78d46abc59d443d5c0091f22a5b9
+    created: 1752154860792
+    modified: 1752154898829
+    isPrivate: false
+  data:
+    BASE_URL: http://localhost:3333
