@@ -3,12 +3,12 @@ name: Refund Api
 meta:
   id: wrk_626268be4c3b49fb949abf82e0cc52d6
   created: 1752154860780
-  modified: 1752154860780
+  modified: 1752187536015
   description: ""
 collection:
   - name: Users
     meta:
-      id: fld_31646fe8c7814102bb454eda889b2adb
+      id: fld_cf649057f181412a98776e50c26352b9
       created: 1752157236138
       modified: 1752157277620
       sortKey: -1752157236138
@@ -17,9 +17,9 @@ collection:
       - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
         name: Create
         meta:
-          id: req_408728a06d1b46cc8cc8896f3367b51a
+          id: req_3edb841709304f4c9654a8ecd0f73782
           created: 1752157239893
-          modified: 1752158696195
+          modified: 1752194780837
           isPrivate: false
           description: ""
           sortKey: -1752157239893
@@ -28,8 +28,8 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"name": "Joiran Costa",
-            	"email": "joiran@email.com",
+            	"name": "Fulano de tal",
+            	"email": "fulano@email.com",
             	"password": "123456"
             }
         headers:
@@ -37,6 +37,9 @@ collection:
             value: application/json
           - name: User-Agent
             value: insomnia/11.2.0
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -45,11 +48,14 @@ collection:
             send: true
             store: true
           rebuildPath: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
     environment:
       RESOURCE: users
   - name: Sessions
     meta:
-      id: fld_b745fb9b925d489780fa80186a972e44
+      id: fld_1730cd9ce30643de82a0b47a84ce9767
       created: 1752173755433
       modified: 1752173765384
       sortKey: -1751900363244
@@ -58,9 +64,9 @@ collection:
       - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
         name: Create
         meta:
-          id: req_6734aa68aa544b7385d4c8211cbfa9b1
+          id: req_179fe9f556334b89ac6948ec7595bdc1
           created: 1752173755435
-          modified: 1752174685364
+          modified: 1752194898945
           isPrivate: false
           description: ""
           sortKey: -1752157239893
@@ -69,7 +75,7 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"email": "joiran@email.com",
+            	"email": "jackjoe@email.com",
             	"password": "123456"
             }
         headers:
@@ -77,6 +83,9 @@ collection:
             value: application/json
           - name: User-Agent
             value: insomnia/11.2.0
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -85,11 +94,14 @@ collection:
             send: true
             store: true
           rebuildPath: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
     environment:
       RESOURCE: sessions
   - name: Refunds
     meta:
-      id: fld_9d01bf254b434a9abb13166fc0bcf8ed
+      id: fld_9ba2929a13024421a825154fb365d1ee
       created: 1752180660658
       modified: 1752180690962
       sortKey: -1751771926797
@@ -98,9 +110,9 @@ collection:
       - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
         name: Create
         meta:
-          id: req_b582c8d95a364ac8a7c911bf54aec4d0
+          id: req_d3b49a2fde544108b81d8a956f1354b5
           created: 1752180660661
-          modified: 1752180677149
+          modified: 1752194868354
           isPrivate: false
           description: ""
           sortKey: -1752157239893
@@ -109,13 +121,23 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	
+            	"name": "Uber para palestra", 
+            	"category": "transport", 
+            	"amount": 45.91,
+            	"filename": "comprovante-de-pagamento.png"
             }
         headers:
           - name: Content-Type
             value: application/json
           - name: User-Agent
             value: insomnia/11.2.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_179fe9f556334b89ac6948ec7595bdc1',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -124,12 +146,49 @@ collection:
             send: true
             store: true
           rebuildPath: true
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
+        name: Index
+        meta:
+          id: req_14bbfe70de62461ab1f350926c4dc768
+          created: 1752194126745
+          modified: 1752194930690
+          isPrivate: false
+          description: ""
+          sortKey: -1752157238065.5
+        method: GET
+        parameters:
+          - id: pair_5231fd5a88f84a639a14f4b7c131c82a
+            name: name
+            value: Fulano
+            description: ""
+            disabled: true
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_179fe9f556334b89ac6948ec7595bdc1',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        scripts:
+          preRequest: ""
+          afterResponse: ""
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
     environment:
       RESOURCE: refunds
   - url: "{{ _.BASE_URL }}"
     name: Test
     meta:
-      id: req_0d4a42b74363444b930302d1d0dd1db0
+      id: req_3fc4e046dfef45bda650b49870314de9
       created: 1752154906446
       modified: 1752173808657
       isPrivate: false
@@ -139,6 +198,9 @@ collection:
     headers:
       - name: User-Agent
         value: insomnia/11.2.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -151,14 +213,14 @@ cookieJar:
   name: Default Jar
   meta:
     id: jar_229eb873d9aa78d46abc59d443d5c0091f22a5b9
-    created: 1752154860834
-    modified: 1752154860834
+    created: 1752187536057
+    modified: 1752187536057
 environments:
   name: Base Environment
   meta:
     id: env_229eb873d9aa78d46abc59d443d5c0091f22a5b9
     created: 1752154860792
-    modified: 1752154898829
+    modified: 1752187649670
     isPrivate: false
   data:
     BASE_URL: http://localhost:3333
